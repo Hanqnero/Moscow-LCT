@@ -192,7 +192,7 @@ class YOLOInferenceGUI:
         # Use relative path from script location
         script_dir = Path(__file__).parent.resolve()
         initial_dir = script_dir / "runs" / "detect"
-        
+
         model_path = filedialog.askopenfilename(
             title="Select YOLO Model",
             filetypes=[("PyTorch Model", "*.pt"), ("All Files", "*.*")],
