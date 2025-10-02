@@ -5,6 +5,10 @@ YOLOv11 Training Script for Tree Detection (CPU Optimized)
 
 from ultralytics import YOLO
 import torch
+from pathlib import Path
+
+# Get the script directory
+script_dir = Path(__file__).parent.resolve()
 
 print(f"PyTorch version: {torch.__version__}")
 print(f"CUDA available: {torch.cuda.is_available()}")
@@ -18,9 +22,12 @@ else:
 # Initialize a YOLOv11 nano model (smallest/fastest)
 model = YOLO("yolo11n.pt")
 
+# Path to dataset (relative to script location)
+data_yaml = script_dir / "dataset" / "data.yaml"
+
 # Train the model with CPU-optimized settings
 results = model.train(
-    data="/Users/hanqnero/Dev/Roboflow model/dataset/data.yaml",
+    data=str(data_yaml),
     epochs=10,  # Reduced epochs for faster training on CPU
     imgsz=416,  # Smaller image size for faster training
     batch=4,  # Smaller batch size for CPU

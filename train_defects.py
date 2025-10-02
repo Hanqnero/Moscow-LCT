@@ -6,9 +6,13 @@ Trains on the defects dataset with 14 classes (tree types + defects)
 
 from ultralytics import YOLO
 import torch
+from pathlib import Path
+import os
 
 
 def main():
+    # Get the script directory
+    script_dir = Path(__file__).parent.resolve()
     print(f"PyTorch version: {torch.__version__}")
     print(f"CUDA available: {torch.cuda.is_available()}")
 
@@ -19,8 +23,8 @@ def main():
         print("Using CPU for training")
         device = "cpu"
 
-    # Path to defects dataset
-    data_yaml = "/Users/hanqnero/Dev/Roboflow model/defects/dataset/data.yaml"
+    # Path to defects dataset (relative to script location)
+    data_yaml = script_dir / "defects" / "dataset" / "data.yaml"
 
     print(f"\nUsing dataset: {data_yaml}")
     print(f"\n14 Classes:")

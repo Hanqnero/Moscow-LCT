@@ -159,7 +159,9 @@ class YOLOInferenceGUI:
 
     def auto_load_model(self):
         """Automatically load the most recent trained model"""
-        runs_dir = Path("/Users/hanqnero/Dev/Roboflow model/runs/detect")
+        # Use relative path from script location
+        script_dir = Path(__file__).parent.resolve()
+        runs_dir = script_dir / "runs" / "detect"
 
         if runs_dir.exists():
             # Find all training directories
@@ -187,10 +189,14 @@ class YOLOInferenceGUI:
 
     def load_model(self):
         """Load a YOLO model"""
+        # Use relative path from script location
+        script_dir = Path(__file__).parent.resolve()
+        initial_dir = script_dir / "runs" / "detect"
+        
         model_path = filedialog.askopenfilename(
             title="Select YOLO Model",
             filetypes=[("PyTorch Model", "*.pt"), ("All Files", "*.*")],
-            initialdir="/Users/hanqnero/Dev/Roboflow model/runs/detect",
+            initialdir=str(initial_dir) if initial_dir.exists() else str(script_dir),
         )
 
         if model_path:
