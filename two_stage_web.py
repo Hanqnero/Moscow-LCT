@@ -126,22 +126,21 @@ def main():
 
         # Info
         st.subheader("ℹ️ Detection Classes")
-        with st.expander("Tree Types (11)"):
+        with st.expander("Tree Types (2)"):
             st.markdown(
                 """
-            - Ash, Birch, Bush, Chestnut
-            - Larch, Linden, Maple
-            - Oak, Pine, Rowan
-            - Unknown Tree
+            - Bush
+            - Oak
             """
             )
 
-        with st.expander("Defect Types (11)"):
+        with st.expander("Defect Types (12)"):
             st.markdown(
                 """
             - Crack, Dead Bush, Dead Tree
             - Dry Crown, Leaned Tree
             - Marked Tree, Market Tree
+            - Marked Tree (variant)
             - Rot, Stem Damage
             - Stem Rot, Tree Hole
             """

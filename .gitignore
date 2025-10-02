@@ -1,6 +1,18 @@
 __pycache__
 .mypy_cache
 .venv
-*.pt
+
+# Ignore datasets
 dataset
-defects
+defects/dataset
+
+# Ignore all .pt files except trained weights
+*.pt
+!runs/**/weights/*.pt
+!yolo11n.pt
+
+# Ignore specific runs subfolders but keep weights
+runs/detect/**/labels/
+runs/detect/**/labels.cache
+runs/defects/**/labels/
+runs/defects/**/labels.cache

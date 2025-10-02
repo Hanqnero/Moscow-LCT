@@ -32,19 +32,10 @@ class TwoStageDetector:
         self.defect_model = YOLO(defect_model_path)
 
         # Define which classes are tree types vs defects
-        # Based on the defects dataset classes
+        # Based on the updated defects dataset classes (14 classes)
         self.tree_classes = {
-            "ash",
-            "birch",
             "bush",
-            "chestnut",
-            "larch",
-            "linden",
-            "maple",
             "oak",
-            "pine",
-            "rowan",
-            "unknown_tree",
         }
 
         self.defect_classes = {
@@ -53,6 +44,7 @@ class TwoStageDetector:
             "deadtree",
             "dry_crone",
             "leaned_tree",
+            "marked_tree",  # Note: updated from markedtree
             "markedtree",
             "markettree",
             "rot",
