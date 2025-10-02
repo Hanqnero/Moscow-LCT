@@ -11,6 +11,16 @@ import numpy as np
 from pathlib import Path
 import tempfile
 import json
+import torch
+
+# Fix for PyTorch 2.6+ weights_only security change
+try:
+    from ultralytics.nn.tasks import DetectionModel
+
+    torch.serialization.add_safe_globals([DetectionModel])
+except Exception:
+    pass  # Older PyTorch versions don't have this
+
 from two_stage_detection import TwoStageDetector
 
 # Page configuration

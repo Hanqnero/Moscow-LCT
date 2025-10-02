@@ -7,13 +7,21 @@ This project is now fully portable and works on Windows! All paths are relative,
 
 We've created easy-to-use batch files for Windows users. Simply double-click to run:
 
-### 🚀 Main Application
-**`start_app.bat`** - Launch the main web interface
-- One-click access to both detection systems
-- Automatic dependency checking
-- Opens in your default browser
+### �️ Desktop Application (NEW!)
+**`start_desktop_app.bat`** - Native Windows Desktop App
+- **Full GUI application** with Tkinter
+- No browser required - runs natively
+- Side-by-side image comparison
+- Real-time detection with progress bar
+- Export annotated images and JSON
+- Works completely offline
+- **Recommended for Windows users!**
 
-### 🌳 Detection Applications
+### 🚀 Web Applications
+**`start_app.bat`** - Launch the main web interface
+- Two-stage detection (trees + defects)
+- Browser-based interface
+- Automatic dependency checking
 
 **`start_simple_detection.bat`** - Simple tree detection
 - Quick tree counting

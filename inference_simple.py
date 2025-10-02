@@ -1,4 +1,17 @@
-#!/usr/bin/env python3
+#!/usrfrom ultralytics import YOLO
+from pathlib import Path
+import sys
+import cv2
+import torch
+from config_loader import load_config
+
+# Fix for PyTorch 2.6+ weights_only security change
+try:
+    from ultralytics.nn.tasks import DetectionModel
+
+    torch.serialization.add_safe_globals([DetectionModel])
+except Exception:
+    pass  # Older PyTorch versions don't have thishon3
 """
 YOLOv11 Simple Inference Script for Tree Detection
 Command-line tool for running inference on images
@@ -8,7 +21,14 @@ from ultralytics import YOLO
 from pathlib import Path
 import sys
 import cv2
+import torch
 from config_loader import load_config
+
+# Fix for PyTorch 2.6+ weights_only security change
+try:
+    torch.serialization.add_safe_globals(["ultralytics.nn.tasks.DetectionModel"])
+except Exception:
+    pass  # Older PyTorch versions don't have this
 
 # Load configuration
 config = load_config()

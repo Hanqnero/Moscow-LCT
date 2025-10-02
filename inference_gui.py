@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 YOLOv11 Inference GUI for Tree Detection
 Simple GUI application for selecting images and running inference
@@ -12,7 +11,17 @@ import cv2
 import numpy as np
 from pathlib import Path
 from ultralytics import YOLO
+import torch
 import os
+
+# Fix for PyTorch 2.6+ weights_only security change
+
+try:
+    from ultralytics.nn.tasks import DetectionModel
+
+    torch.serialization.add_safe_globals([DetectionModel])
+except Exception:
+    pass  # Older PyTorch versions don't have this
 
 
 class YOLOInferenceGUI:

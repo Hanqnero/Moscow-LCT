@@ -6,6 +6,19 @@ echo ====================================
 echo    Tree Detection System
 echo ====================================
 echo.
+
+REM Activate virtual environment if it exists
+if exist "venv\Scripts\activate.bat" (
+    echo Activating virtual environment...
+    call venv\Scripts\activate.bat
+) else if exist ".venv\Scripts\activate.bat" (
+    echo Activating virtual environment...
+    call .venv\Scripts\activate.bat
+) else (
+    echo Warning: Virtual environment not found. Using system Python.
+)
+
+echo.
 echo Starting web application...
 echo.
 echo The app will open in your browser at:

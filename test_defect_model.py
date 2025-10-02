@@ -1,10 +1,27 @@
-#!/usr/bin/env python3
+#!/usfrom ultralytics import YOLO
+from pathlib import Path
+import torch
+
+# Fix for PyTorch 2.6+ weights_only security change
+try:
+    from ultralytics.nn.tasks import DetectionModel
+
+    torch.serialization.add_safe_globals([DetectionModel])
+except Exception:
+    pass  # Older PyTorch versions don't have this python3
 """
 Test the defect detection model directly to debug detection issues
 """
 
 from ultralytics import YOLO
 from pathlib import Path
+import torch
+
+# Fix for PyTorch 2.6+ weights_only security change
+try:
+    torch.serialization.add_safe_globals(["ultralytics.nn.tasks.DetectionModel"])
+except Exception:
+    pass  # Older PyTorch versions don't have this
 
 # Load the defect model
 print("Loading defect model...")

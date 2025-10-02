@@ -16,3 +16,5 @@ runs/detect/**/labels/
 runs/detect/**/labels.cache
 runs/defects/**/labels/
 runs/defects/**/labels.cache
+
+build
